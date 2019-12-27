@@ -1,6 +1,6 @@
 steps:
 
-- id: 0. check the root
+- id: 0. check the root and repo
   name: gcr.io/cloud-builders/docker
   dir: /
   entrypoint: bash
@@ -8,15 +8,15 @@ steps:
   - "-c"
   - "pwd && ls -l && ls -l /workspace"
 
-- id: 1. check the repo, leave a mark under /workspace
+- id: 1. leave a mark under /workspace/test1
   name: gcr.io/cloud-builders/docker
   dir: test1
   entrypoint: bash
   args:
   - "-c"
-  - "pwd && ls -l && ls -l /workspace && touch /workspace/mark"
+  - "pwd && ls -l && ls -l /workspace && touch mark"
 
-- id: 2. check the mark, check the 2nd repo
+- id: 2. check the mark
   name: gcr.io/cloud-builders/docker
   dir: test2
   entrypoint: bash

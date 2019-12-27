@@ -2,17 +2,17 @@ steps:
 
 - id: 1. check the repo, leave a mark under /workspace
   name: gcr.io/cloud-builders/docker
+  dir: test1
   entrypoint: bash
   args:
   - "-c"
-  - "pwd && ls -l"
-  - "touch mark"
+  - "pwd && ls -l && ls -l /workspace && touch /workspace/mark"
 
 - id: 2. check the mark, check the 2nd repo
   name: gcr.io/cloud-builders/docker
-  dir: test_cloudbuild
+  dir: test2
   entrypoint: bash
   args:
   - "-c"
-  - "pwd && ls -l /workspace && ls -l"
+  - "pwd && ls -l && ls -l /workspace && ls -l /workspace/test1"
   

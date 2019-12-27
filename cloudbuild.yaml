@@ -1,17 +1,18 @@
 steps:
 
-- id: 1. Where am I?
+- id: 1. check the repo, leave a mark under /workspace
   name: gcr.io/cloud-builders/docker
   entrypoint: bash
   args:
   - "-c"
   - "pwd && ls -l"
-  _ "touch mark"
+  - "touch mark"
 
-- id: 2. Where am I?
+- id: 2. check the mark, check the 2nd repo
   name: gcr.io/cloud-builders/docker
   dir: test_cloudbuild
   entrypoint: bash
   args:
   - "-c"
   - "pwd && ls -l /workspace && ls -l"
+  

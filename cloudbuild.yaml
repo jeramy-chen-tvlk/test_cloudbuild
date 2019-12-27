@@ -1,5 +1,13 @@
 steps:
 
+- id: 0. check the root
+  name: gcr.io/cloud-builders/docker
+  dir: /
+  entrypoint: bash
+  args:
+  - "-c"
+  - "pwd && ls -l && ls -l /workspace"
+
 - id: 1. check the repo, leave a mark under /workspace
   name: gcr.io/cloud-builders/docker
   dir: test1

@@ -1,0 +1,24 @@
+steps:
+
+
+- id: clone mirrored private repo
+  name: gcr.io/cloud-builders/gcloud
+  args:
+  - "source"
+  - "repos"
+  - "clone"
+  - "github_tvlk-data_dark-phoenix"
+  - "app"
+
+- id: checkout the right version
+  name: gcr.io/cloud-builders/git
+  dir: /workspace/app
+  args:
+  - "checkout"
+  - "bugfix/resolve_dependency"
+
+- id: check git log
+  name: gcr.io/cloud-builders/git
+  dir: /workspace/app
+  args:
+  - "log"

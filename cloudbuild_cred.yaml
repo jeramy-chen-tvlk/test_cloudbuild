@@ -1,0 +1,9 @@
+steps:
+
+- id: check credential
+  name: gcr.io/cloud-builders/docker
+  dir: /
+  entrypoint: bash
+  args:
+  - "-c"
+  - "ls $${HOME}/.config/gcloud"
